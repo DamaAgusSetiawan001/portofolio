@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dama Agus Setiawan — Portfolio</title>
+
+  <!-- Google Fonts: Fraunces (Editorial Serif), Plus Jakarta Sans (Clean Sans), JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Fraunces"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            paper: {
+              50: '#FBF9F5',
+              100: '#F3EFE6',
+              200: '#E8E2D5',
+            },
+            ink: {
+              900: '#1C1B18',
+              700: '#373530',
+              500: '#57534E',
+              400: '#78716C',
+            },
+            rule: '#E2DDD2',
+            terracotta: {
+              DEFAULT: '#B84A27',
+              dark: '#963A1D',
+              soft: '#F5E6E0',
+            },
+            forest: {
+              DEFAULT: '#234E3C',
+              soft: '#E4EDE9',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FBF9F5;
+      color: #1C1B18;
+      font-feature-settings: "kern" 1, "liga" 1;
+      overflow-x: hidden;
+    }
+
+    /* Editorial underline hover link */
+    .editorial-link {
+      position: relative;
+      display: inline-block;
+    }
+    .editorial-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.28s ease;
+    }
+    .editorial-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Subtle paper grain feel & clean scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FBF9F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D6CFC2;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B8B0A0;
+    }
+
+    /* Drawer transition */
+    #detailDrawer {
+      transition: opacity 0.25s ease;
+    }
+    #drawerPanel {
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-terracotta/15 selection:text-terracotta">
+
+  <!-- HEADER MINIMAL -->
+  <header class="border-b border-rule bg-paper-50/95 sticky top-0 z-30 backdrop-blur-sm">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="font-serif font-semibold text-lg tracking-tight text-ink-900">
+        Dama Agus Setiawan
+      </a>
+
+      <nav class="flex items-center gap-6 sm:gap-8 text-sm text-ink-500">
+        <a href="#karya" class="editorial-link hover:text-ink-900 transition-colors">Karya</a>
+        <a href="#cara-kerja" class="editorial-link hover:text-ink-900 transition-colors">Cara Kerja</a>
+        <a href="#kontak" class="editorial-link text-terracotta font-medium">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-5 sm:px-8">
+
+    <!-- HERO ASIMETRIS (SPLIT 7 / 5) -->
+    <section class="pt-14 pb-16 sm:pt-20 sm:pb-24 border-b border-rule">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        
+        <!-- Kolom Kiri (7 Kolom): Headline & Cerita Pengantar -->
+        <div class="lg:col-span-7">
+          <p class="font-mono text-xs uppercase tracking-widest text-terracotta mb-5">
+            Web Developer &mdash; Aplikasi Web &amp; Halaman Usaha
+          </p>
+
+          <h1 class="font-serif text-3xl sm:text-5xl font-semibold text-ink-900 leading-[1.15] tracking-tight mb-6">
+            Membangun website yang rapi, ringan, dan benar-benar dipakai dalam kerja sehari-hari.
+          </h1>
+
+          <p class="text-base sm:text-lg text-ink-500 leading-relaxed max-w-2xl mb-8">
+            Saya merancang dan mengerjakan aplikasi berbasis web dari nol&mdash;mulai dari sistem pengolahan rapor Kurikulum Merdeka di sekolah, pencatatan stok barang harian untuk warung, sampai halaman profil usaha yang langsung terhubung ke WhatsApp.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#karya" class="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-terracotta hover:bg-terracotta-dark text-paper-50 text-sm font-medium transition-colors">
+              <span>Lihat Catatan Proyek</span>
+              <span aria-hidden="true">&darr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan (5 Kolom): Catatan Kolofon / Spec Sheet -->
+        <aside class="lg:col-span-5 lg:mt-8 border border-rule bg-paper-100/70 rounded-lg p-6">
+          <div class="flex items-center justify-between pb-3 mb-4 border-b border-rule">
+            <span class="font-mono text-xs uppercase tracking-wider text-ink-400">Catatan Singkat</span>
+            <span class="inline-flex items-center gap-2 font-mono text-xs text-forest font-medium">
+              <span class="w-2 h-2 rounded-full bg-forest"></span>
+              Terbuka untuk proyek baru
+            </span>
+          </div>
+
+          <dl class="divide-y divide-rule text-sm">
+            <div class="py-3 flex justify-between gap-4">
+              <dt class="font-mono text-xs text-ink-400 shrink-0">Fokus Kerja</dt>
+              <dd class="text-ink-900 font-medium text-right">Sistem Web Kustom, Administrasi Sekolah, UMKM &amp; Landing Page</dd>
+            </div>
+            <div class="py-3 flex justify-between gap-4">
+              <dt class="font-mono text-xs text-ink-400 shrink-0">Stack Harian</dt>
+              <dd class="font-mono text-xs text-ink-700 text-right leading-relaxed">PHP, MySQL, HTML5, CSS3, Tailwind, JavaScript</dd>
+            </div>
+            <div class="py-3 flex justify-between gap-4">
+              <dt class="font-mono text-xs text-ink-400 shrink-0">Prinsip UI</dt>
+              <dd class="text-ink-700 text-right">Jelas dibaca, cepat dibuka di HP, tidak membingungkan pengguna awam</dd>
+            </div>
+            <div class="pt-3 flex justify-between gap-4">
+              <dt class="font-mono text-xs text-ink-400 shrink-0">Domisili</dt>
+              <dd class="text-ink-700 text-right">Jawa Barat, Indonesia (Remote / Lokal)</dd>
+            </div>
+          </dl>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- DAFTAR PROYEK ASIMETRIS -->
+    <section id="karya" class="py-16 sm:py-24 border-b border-rule">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-12 border-b border-rule">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-ink-400 block mb-2">Arsip Pilihan (01 &ndash; 03)</span>
+          <h2 class="font-serif text-2xl sm:text-4xl font-semibold text-ink-900 tracking-tight">
+            Pekerjaan yang Pernah Dibangun
+          </h2>
+        </div>
+        <p class="text-sm text-ink-500 max-w-sm">
+          Pilih salah satu proyek untuk membaca latar belakang masalah di lapangan dan detail fitur yang dibuat.
+        </p>
+      </div>
+
+      <!-- PROYEK 01 (FEATURED / PORSI UTAMA - 2 KOLOM BERDAMPINGAN) -->
+      <article onclick="openDrawer('rapor')" class="group cursor-pointer pb-14 mb-14 border-b border-rule">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          
+          <!-- Narasi Kiri (5 Kolom) -->
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="font-mono text-xs font-medium text-terracotta">01 / FEATURED</span>
+              <span class="text-rule">&bull;</span>
+              <span class="font-mono text-xs text-ink-400">Sistem Pendidikan</span>
+            </div>
+
+            <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-ink-900 group-hover:text-terracotta transition-colors mb-4">
+              Sistem Rapor Kurikulum Merdeka
+            </h3>
+
+            <p class="text-ink-500 text-sm sm:text-base leading-relaxed mb-5">
+              Dibuat untuk membantu wali kelas dan guru mata pelajaran yang sering kewalahan merekap capaian pembelajaran (CP) dari banyak file terpisah. Guru cukup menginput nilai per mapel, lalu sistem menyusun deskripsi capaian dan format rapor siap cetak secara otomatis.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-100 border border-rule text-ink-700">PHP</span>
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-100 border border-rule text-ink-700">MySQL</span>
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-100 border border-rule text-ink-700">JavaScript</span>
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-100 border border-rule text-ink-700">Print CSS</span>
+            </div>
+
+            <span class="inline-flex items-center gap-2 text-sm font-medium text-terracotta group-hover:translate-x-1 transition-transform">
+              <span>Baca cerita &amp; detail fitur</span>
+              <span aria-hidden="true">&rarr;</span>
+            </span>
+          </div>
+
+          <!-- Pratinjau Kertas / Tabel Nilai Bersih Kanan (7 Kolom) -->
+          <div class="lg:col-span-7">
+            <div class="rounded-lg border border-rule bg-paper-100 p-4 sm:p-6 transition-colors group-hover:border-ink-400">
+              <!-- Bar Atas Dokumen -->
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-rule">
+                <div>
+                  <span class="font-mono text-[11px] uppercase tracking-wider text-ink-400 block">Lembar Rekap Nilai Semester Ganjil</span>
+                  <span class="text-sm font-semibold text-ink-900">Kelas XI-B &bull; Mata Pelajaran: Matematika</span>
+                </div>
+                <span class="font-mono text-xs px-2.5 py-1 rounded bg-forest-soft text-forest border border-forest/20">
+                  Siap Cetak Rapor
+                </span>
+              </div>
+
+              <!-- Tabel Nilai Ala Dokumen Akademik -->
+              <div class="bg-paper-50 border border-rule rounded overflow-hidden">
+                <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr class="border-b border-rule bg-paper-100/70 font-mono text-[11px] text-ink-500">
+                      <th class="py-2.5 px-3 font-medium">Nama Siswa</th>
+                      <th class="py-2.5 px-3 font-medium text-center">Nilai</th>
+                      <th class="py-2.5 px-3 font-medium hidden sm:table-cell">Ringkasan Capaian Pembelajaran</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-rule text-ink-700">
+                    <tr>
+                      <td class="py-2.5 px-3 font-medium text-ink-900">Ahmad Fauzan</td>
+                      <td class="py-2.5 px-3 font-mono text-center">88</td>
+                      <td class="py-2.5 px-3 text-xs text-ink-500 hidden sm:table-cell">Mampu menerapkan konsep matriks dengan sangat baik.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2.5 px-3 font-medium text-ink-900">Nabila Putri</td>
+                      <td class="py-2.5 px-3 font-mono text-center">92</td>
+                      <td class="py-2.5 px-3 text-xs text-ink-500 hidden sm:table-cell">Sangat menonjol dalam pemecahan masalah fungsi &amp; limit.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2.5 px-3 font-medium text-ink-900">Rizky Pratama</td>
+                      <td class="py-2.5 px-3 font-mono text-center">79</td>
+                      <td class="py-2.5 px-3 text-xs text-ink-500 hidden sm:table-cell">Cukup baik, perlu pendampingan pada materi trigonometri.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="flex items-center justify-between mt-3 pt-2 text-[11px] font-mono text-ink-400">
+                <span>Otomatisasi deskripsi rapor aktif</span>
+                <span class="text-ink-700">Format: PDF / A4 Print</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- PROYEK 02 & 03 (SUSUNAN ASIMETRIS: PANEL DETAIL 7 KOLOM + ENTRI EDITORIAL 5 KOLOM) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        
+        <!-- PROYEK 02 (7 Kolom): Panel Terperinci dengan Simulasi Daftar Stok Warung -->
+        <article onclick="openDrawer('inventori')" class="lg:col-span-7 group cursor-pointer border border-rule bg-paper-100/50 hover:bg-paper-100 rounded-lg p-6 sm:p-8 transition-colors">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="font-mono text-xs text-ink-400">02 &mdash; Operasional Usaha Kecil</span>
+            <span class="font-mono text-xs text-terracotta group-hover:translate-x-1 transition-transform">Detail &rarr;</span>
+          </div>
+
+          <h3 class="font-serif text-2xl font-semibold text-ink-900 group-hover:text-terracotta transition-colors mb-3">
+            Aplikasi Inventori Warung
+          </h3>
+
+          <p class="text-sm sm:text-base text-ink-500 leading-relaxed mb-6">
+            Pemilik warung sering baru sadar barang habis saat pembeli sudah bertanya di depan etalase. Aplikasi web ringan ini mencatat barang masuk saat kulakan, barang keluar harian, serta memberi tanda otomatis pada barang yang stoknya mulai menipis.
+          </p>
+
+          <!-- Simulasi Daftar Stok Kertas Sederhana -->
+          <div class="bg-paper-50 border border-rule rounded-md p-4 mb-6">
+            <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-rule text-xs">
+              <span class="font-mono text-ink-500">Catatan Stok Harian</span>
+              <span class="font-mono text-[11px] text-terracotta font-medium">2 barang perlu kulakan</span>
+            </div>
+
+            <div class="divide-y divide-rule text-xs sm:text-sm">
+              <div class="py-2 flex items-center justify-between gap-3">
+                <div>
+                  <span class="font-medium text-ink-900">Beras Pulen 5 kg</span>
+                  <span class="block font-mono text-[11px] text-ink-400">Masuk: 15 &bull; Keluar: 13</span>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded bg-terracotta-soft text-terracotta font-medium">
+                  Sisa 2 karung
+                </span>
+              </div>
+
+              <div class="py-2 flex items-center justify-between gap-3">
+                <div>
+                  <span class="font-medium text-ink-900">Gula Pasir 1 kg</span>
+                  <span class="block font-mono text-[11px] text-ink-400">Masuk: 30 &bull; Keluar: 27</span>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded bg-terracotta-soft text-terracotta font-medium">
+                  Sisa 3 bungkus
+                </span>
+              </div>
+
+              <div class="pt-2 flex items-center justify-between gap-3">
+                <div>
+                  <span class="font-medium text-ink-900">Minyak Goreng 2 L</span>
+                  <span class="block font-mono text-[11px] text-ink-400">Masuk: 24 &bull; Keluar: 6</span>
+                </div>
+                <span class="font-mono text-xs px-2 py-0.5 rounded bg-forest-soft text-forest font-medium">
+                  Sisa 18 pouch
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap gap-2">
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-50 border border-rule text-ink-700">PHP</span>
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-50 border border-rule text-ink-700">MySQL</span>
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-50 border border-rule text-ink-700">JavaScript</span>
+            </div>
+            <span class="text-xs font-medium text-ink-700 underline underline-offset-4 group-hover:text-terracotta">
+              Lihat studi kasus
+            </span>
+          </div>
+        </article>
+
+        <!-- PROYEK 03 (5 Kolom): Entri Editorial Ringkas Tanpa Kotak Berat -->
+        <article onclick="openDrawer('landing')" class="lg:col-span-5 group cursor-pointer lg:pt-2 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-rule">
+              <span class="font-mono text-xs text-ink-400">03 &mdash; Profil &amp; Pemasaran</span>
+              <span class="font-mono text-xs text-terracotta group-hover:translate-x-1 transition-transform">Detail &rarr;</span>
+            </div>
+
+            <h3 class="font-serif text-2xl font-semibold text-ink-900 group-hover:text-terracotta transition-colors mb-3">
+              Landing Page Produk &amp; Layanan Usaha
+            </h3>
+
+            <p class="text-sm sm:text-base text-ink-500 leading-relaxed mb-5">
+              Banyak usaha lokal punya produk bagus, tapi calon pembeli bingung mencari info harga, layanan, atau kontak resminya. Saya menyusun halaman web satu layar penuh yang ringan dibuka lewat jaringan seluler, menjelaskan penawaran secara jujur, dan langsung mengarahkan pengunjung ke WhatsApp.
+            </p>
+
+            <ul class="space-y-2.5 text-sm text-ink-700 border-t border-b border-rule py-4 mb-6">
+              <li class="flex items-start gap-2.5">
+                <span class="font-mono text-xs text-terracotta mt-0.5">01.</span>
+                <span>Tampilan bersih &amp; nyaman dibaca di layar HP maupun laptop.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="font-mono text-xs text-terracotta mt-0.5">02.</span>
+                <span>Struktur informasi runtut: layanan, keunggulan, dan cara pesan.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="font-mono text-xs text-terracotta mt-0.5">03.</span>
+                <span>Tombol pesan WhatsApp langsung dengan format chat siap kirim.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap gap-2">
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-100 border border-rule text-ink-700">HTML5</span>
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-100 border border-rule text-ink-700">Tailwind CSS</span>
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-100 border border-rule text-ink-700">JS</span>
+            </div>
+            <span class="text-sm font-medium text-terracotta underline underline-offset-4">
+              Baca rincian &rarr;
+            </span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CARA KERJA (3 POIN HORIZONTAL DENGAN GARIS PEMISAH TIPIS) -->
+    <section id="cara-kerja" class="py-16 sm:py-20 border-b border-rule">
+      <div class="mb-10">
+        <span class="font-mono text-xs uppercase tracking-widest text-ink-400 block mb-2">Pendekatan</span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink-900">
+          Cara Saya Mengerjakan Proyek
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 border-t border-b border-rule divide-y md:divide-y-0 md:divide-x divide-rule">
+        <div class="py-6 md:py-8 md:pr-8">
+          <span class="font-mono text-xs text-terracotta block mb-3">Langkah 01</span>
+          <h3 class="font-serif text-xl font-semibold text-ink-900 mb-2">Dengarkan Alur Aslinya</h3>
+          <p class="text-sm text-ink-500 leading-relaxed">
+            Sebelum menulis kode, saya pelajari dulu bagaimana pekerjaan dilakukan sehari-hari&mdash;entah itu cara guru menghitung nilai atau cara pemilik toko mencatat barang keluar.
+          </p>
+        </div>
+
+        <div class="py-6 md:py-8 md:px-8">
+          <span class="font-mono text-xs text-terracotta block mb-3">Langkah 02</span>
+          <h3 class="font-serif text-xl font-semibold text-ink-900 mb-2">Buat Antarmuka yang Masuk Akal</h3>
+          <p class="text-sm text-ink-500 leading-relaxed">
+            Tombol jelas, istilah tidak berbelit, dan alur pengisian data dibuat sesingkat mungkin supaya pengguna baru pun tidak perlu pelatihan berhari-hari.
+          </p>
+        </div>
+
+        <div class="py-6 md:py-8 md:pl-8">
+          <span class="font-mono text-xs text-terracotta block mb-3">Langkah 03</span>
+          <h3 class="font-serif text-xl font-semibold text-ink-900 mb-2">Uji Pakai &amp; Dampingi</h3>
+          <p class="text-sm text-ink-500 leading-relaxed">
+            Sistem diuji menggunakan skenario data nyata, dipublikasikan ke server atau komputer lokal, lalu saya bantu pastikan berjalan lancar saat mulai dipakai.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAK SEDERHANA & LANGSUNG -->
+    <section id="kontak" class="py-16 sm:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        
+        <!-- Informasi Kontak (6 Kolom) -->
+        <div class="lg:col-span-6">
+          <span class="font-mono text-xs uppercase tracking-widest text-terracotta block mb-3">Kontak</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink-900 leading-tight mb-4">
+            Perlu website usaha atau aplikasi web kustom?
+          </h2>
+          <p class="text-base text-ink-500 leading-relaxed mb-8">
+            Sampaikan saja gambaran kebutuhan atau kendala yang sedang dihadapi melalui WhatsApp atau email di samping untuk menentukan solusi yang paling pas.
+          </p>
+
+          <!-- Salin Email -->
+          <div class="border-t border-rule pt-6">
+            <span class="font-mono text-xs text-ink-400 block mb-2">Email Langsung</span>
+            <div class="flex flex-wrap items-center gap-3">
+              <span id="emailAddress" class="font-mono text-sm sm:text-base text-ink-900 font-medium select-all">
+                damasetiawan2209@gmail.com
+              </span>
+              <button type="button" onclick="copyEmail()" class="px-3 py-1.5 rounded border border-rule bg-paper-100 hover:bg-paper-200 font-mono text-xs text-ink-700 transition-colors cursor-pointer">
+                Salin Email
+              </button>
+              <span id="copyStatus" class="font-mono text-xs text-forest opacity-0 transition-opacity">
+                Tersalin &check;
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Singkat ke WhatsApp (6 Kolom) -->
+        <div class="lg:col-span-6 border border-rule bg-paper-100/70 rounded-lg p-6 sm:p-8">
+          <h3 class="font-serif text-xl font-semibold text-ink-900 mb-1">Kirim Pesan ke WhatsApp</h3>
+          <p class="text-xs sm:text-sm text-ink-500 mb-5">Pilih topik supaya pesan pembuka langsung tersusun rapi:</p>
+
+          <!-- Pilihan Topik -->
+          <div class="flex flex-wrap gap-2 mb-5" id="topicContainer">
+            <button type="button" onclick="setTopic(this, 'pembuatan Landing Page usaha')" class="topic-pill active px-3 py-1.5 rounded border border-terracotta bg-terracotta text-paper-50 font-mono text-xs transition-colors cursor-pointer">
+              Landing Page
+            </button>
+            <button type="button" onclick="setTopic(this, 'sistem rapor atau administrasi sekolah')" class="topic-pill px-3 py-1.5 rounded border border-rule bg-paper-50 text-ink-700 hover:border-ink-400 font-mono text-xs transition-colors cursor-pointer">
+              Sistem Rapor / Sekolah
+            </button>
+            <button type="button" onclick="setTopic(this, 'aplikasi inventori atau stok warung/toko')" class="topic-pill px-3 py-1.5 rounded border border-rule bg-paper-50 text-ink-700 hover:border-ink-400 font-mono text-xs transition-colors cursor-pointer">
+              Aplikasi Inventori
+            </button>
+            <button type="button" onclick="setTopic(this, 'aplikasi web kustom lainnya')" class="topic-pill px-3 py-1.5 rounded border border-rule bg-paper-50 text-ink-700 hover:border-ink-400 font-mono text-xs transition-colors cursor-pointer">
+              Web Kustom
+            </button>
+          </div>
+
+          <div class="space-y-3.5">
+            <div>
+              <label for="visitorName" class="block font-mono text-xs text-ink-500 mb-1">Nama / Asal Instansi atau Usaha</label>
+              <input id="visitorName" type="text" placeholder="Contoh: Budi — Warung Berkah" class="w-full px-3.5 py-2.5 rounded border border-rule bg-paper-50 text-sm text-ink-900 placeholder-ink-400 focus:outline-none focus:border-terracotta transition-colors" />
+            </div>
+
+            <div>
+              <label for="visitorMessage" class="block font-mono text-xs text-ink-500 mb-1">Pesan Singkat</label>
+              <textarea id="visitorMessage" rows="3" class="w-full px-3.5 py-2.5 rounded border border-rule bg-paper-50 text-sm text-ink-900 placeholder-ink-400 focus:outline-none focus:border-terracotta transition-colors resize-none">Halo Mas Dama, saya tertarik dengan pembuatan Landing Page usaha.</textarea>
+            </div>
+
+            <button type="button" onclick="openWhatsApp()" class="w-full py-3 px-5 rounded bg-forest hover:bg-forest/90 text-paper-50 text-sm font-medium transition-colors cursor-pointer flex items-center justify-center gap-2">
+              <span>Buka WhatsApp &amp; Kirim Pesan</span>
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER MINIMAL -->
+  <footer class="border-t border-rule bg-paper-100/40">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-ink-400">
+      <div>&copy; <span id="yearNow"></span> Dama Agus Setiawan</div>
+      <div>Dibangun dengan HTML, Tailwind CSS &amp; JavaScript</div>
+    </div>
+  </footer>
+
+  <!-- LACI DETAIL PROYEK (SLIDE-OVER DRAWER BERGAYA KERTAS) -->
+  <div id="detailDrawer" class="fixed inset-0 z-50 hidden bg-ink-900/40 backdrop-blur-[2px]" onclick="handleBackdropClick(event)">
+    <aside id="drawerPanel" class="fixed top-0 right-0 h-full w-full max-w-xl bg-paper-50 border-l border-rule shadow-2xl overflow-y-auto translate-x-full p-6 sm:p-10">
+      <div class="flex items-center justify-between pb-4 mb-6 border-b border-rule">
+        <span id="drawerIndex" class="font-mono text-xs uppercase tracking-wider text-terracotta">Catatan Proyek</span>
+        <button type="button" onclick="closeDrawer()" class="px-3 py-1 rounded border border-rule bg-paper-100 hover:bg-paper-200 font-mono text-xs text-ink-700 cursor-pointer">
+          Tutup [Esc]
+        </button>
+      </div>
+
+      <div id="drawerContent"></div>
+    </aside>
+  </div>
+
+  <script>
+    // Tahun otomatis
+    document.getElementById('yearNow').textContent = new Date().getFullYear();
+
+    // Data studi kasus proyek dengan bahasa membumi
+    const projects = {
+      rapor: {
+        index: '01 / Studi Kasus Pendidikan',
+        title: 'Sistem Rapor Kurikulum Merdeka',
+        context: 'Sekolah Menengah & Wali Kelas',
+        story: 'Pada penerapan Kurikulum Merdeka, guru mata pelajaran dan wali kelas perlu menggabungkan nilai sumatif, formatif, serta deskripsi capaian pembelajaran (CP) ke dalam satu format rapor yang seragam. Sebelumnya proses ini dilakukan terpisah di berbagai file spreadsheet sehingga rawan salah salin nama atau format kolom berantakan saat dicetak.',
+        approach: 'Saya merancang aplikasi web berbasis PHP dan MySQL dengan alur kerja yang mengikuti kebiasaan guru di sekolah: admin menyiapkan data kelas dan tahun ajaran, guru menginput nilai sesuai mata pelajaran masing-masing, lalu wali kelas memantau kelengkapan nilai dan langsung mencetak rapor.',
+        features: [
+          'Pengelolaan master data siswa, kelas, mata pelajaran, dan tahun pelajaran aktif.',
+          'Form input nilai per mata pelajaran beserta pemilihan capaian pembelajaran (CP).',
+          'Penyusunan deskripsi capaian siswa secara otomatis berdasarkan nilai yang diinput.',
+          'Tampilan pratinjau cetak rapor ukuran A4 yang rapi dan siap disimpan sebagai PDF.'
+        ],
+        stack: ['PHP', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'Print Layout']
+      },
+      inventori: {
+        index: '02 / Studi Kasus UMKM',
+        title: 'Aplikasi Inventori Warung',
+        context: 'Toko Kelontong & Warung Harian',
+        story: 'Pemilik warung sering mencatat belanja kulakan di nota kertas, sementara barang keluar jarang tercatat rinci. Akibatnya, barang kebutuhan pokok seperti beras atau gula kadang baru ketahuan habis saat stok di rak benar-benar kosong.',
+        approach: 'Saya membuat sistem inventori web yang ringan tanpa menu yang rumit. Fokus utamanya hanya tiga hal: daftar barang dan sisa stok terkini, pencatatan cepat barang masuk/keluar, serta peringatan otomatis ketika jumlah stok turun di bawah batas aman.',
+        features: [
+          'Daftar barang lengkap dengan satuan (karung, dus, pcs, kg) dan batas minimum stok.',
+          'Pencatatan transaksi barang masuk saat kulakan dan barang keluar harian.',
+          'Penanda warna khusus untuk barang yang stoknya menipis agar segera masuk daftar belanja.',
+          'Riwayat pergerakan stok per barang untuk memudahkan pengecekan ulang.'
+        ],
+        stack: ['PHP', 'MySQL', 'JavaScript', 'Responsive UI']
+      },
+      landing: {
+        index: '03 / Studi Kasus Profil & Pemasaran',
+        title: 'Landing Page Produk & Layanan Usaha',
+        context: 'Pelaku Usaha Lokal & Jasa',
+        story: 'Banyak pelaku usaha mempromosikan jasa lewat media sosial, tetapi calon pelanggan sering kesulitan menemukan daftar layanan lengkap, area jangkauan, atau cara pemesanan yang jelas karena informasi tercecer di banyak postingan.',
+        approach: 'Saya membangun halaman landing page satu halaman yang ringan dibuka lewat koneksi seluler, menyajikan informasi utama secara runtut dari atas ke bawah, dan menyediakan tombol WhatsApp dengan format pesan yang sudah terisi.',
+        features: [
+          'Struktur informasi yang jelas: ringkasan layanan, keunggulan, alur pemesanan, dan kontak.',
+          'Tata letak responsif agar tetap nyaman dibaca di layar ponsel ukuran kecil.',
+          'Optimasi ukuran aset sehingga halaman terbuka cepat tanpa menunggu lama.',
+          'Integrasi tombol WhatsApp langsung agar calon pelanggan tidak perlu menyimpan nomor terlebih dahulu.'
+        ],
+        stack: ['HTML5', 'Tailwind CSS', 'JavaScript', 'SEO Dasar']
+      }
+    };
+
+    // Buka laci detail proyek
+    function openDrawer(key) {
+      const item = projects[key];
+      if (!item) return;
+
+      document.getElementById('drawerIndex').textContent = item.index;
+      document.getElementById('drawerContent').innerHTML = `
+        <span class="font-mono text-xs text-ink-400 block mb-2">Konteks: ${item.context}</span>
+        <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-ink-900 leading-snug mb-6">
+          ${item.title}
+        </h3>
+
+        <div class="space-y-6 text-sm sm:text-base leading-relaxed">
+          <div class="border-t border-rule pt-5">
+            <h4 class="font-mono text-xs uppercase tracking-wider text-ink-400 mb-2">Situasi di Lapangan</h4>
+            <p class="text-ink-700">${item.story}</p>
+          </div>
+
+          <div class="border-t border-rule pt-5">
+            <h4 class="font-mono text-xs uppercase tracking-wider text-ink-400 mb-2">Solusi yang Dibangun</h4>
+            <p class="text-ink-700">${item.approach}</p>
+          </div>
+
+          <div class="border-t border-rule pt-5">
+            <h4 class="font-mono text-xs uppercase tracking-wider text-ink-400 mb-3">Fitur Utama</h4>
+            <ul class="space-y-2.5 text-sm text-ink-700">
+              ${item.features.map((f, idx) => `
+                <li class="flex items-start gap-3">
+                  <span class="font-mono text-xs text-terracotta mt-0.5">0${idx + 1}.</span>
+                  <span>${f}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <div class="border-t border-rule pt-5">
+            <h4 class="font-mono text-xs uppercase tracking-wider text-ink-400 mb-3">Teknologi yang Digunakan</h4>
+            <div class="flex flex-wrap gap-2">
+              ${item.stack.map(tech => `<span class="font-mono text-xs px-2.5 py-1 rounded bg-paper-100 border border-rule text-ink-700">${tech}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="border-t border-rule pt-6 flex items-center justify-between gap-4">
+            <span class="text-xs text-ink-500">Butuh sistem serupa untuk kebutuhan Anda?</span>
+            <a href="#kontak" onclick="closeDrawer()" class="px-4 py-2 rounded bg-terracotta hover:bg-terracotta-dark text-paper-50 text-xs font-medium transition-colors shrink-0">
+              Ke Bagian Kontak &rarr;
+            </a>
+          </div>
+        </div>
+      `;
+
+      const drawer = document.getElementById('detailDrawer');
+      const panel = document.getElementById('drawerPanel');
+      drawer.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        panel.classList.remove('translate-x-full');
+      });
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      const drawer = document.getElementById('detailDrawer');
+      const panel = document.getElementById('drawerPanel');
+      panel.classList.add('translate-x-full');
+      setTimeout(() => {
+        drawer.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 280);
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === 'detailDrawer') {
+        closeDrawer();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDrawer();
+    });
+
+    // Pilihan topik pesan WhatsApp
+    function setTopic(btn, topicText) {
+      document.querySelectorAll('.topic-pill').forEach(el => {
+        el.classList.remove('border-terracotta', 'bg-terracotta', 'text-paper-50');
+        el.classList.add('border-rule', 'bg-paper-50', 'text-ink-700');
+      });
+
+      btn.classList.remove('border-rule', 'bg-paper-50', 'text-ink-700');
+      btn.classList.add('border-terracotta', 'bg-terracotta', 'text-paper-50');
+
+      const name = document.getElementById('visitorName').value.trim();
+      const prefix = name ? `Halo Mas Dama, saya ${name}. ` : 'Halo Mas Dama, ';
+      document.getElementById('visitorMessage').value = `${prefix}saya tertarik dengan ${topicText}.`;
+    }
+
+    // Kirim ke WhatsApp
+    function openWhatsApp() {
+      const phone = '6285179940997'; // Ganti dengan nomor WhatsApp asli Anda
+      const name = document.getElementById('visitorName').value.trim();
+      let message = document.getElementById('visitorMessage').value.trim();
+
+      if (!message) {
+        message = name
+          ? `Halo Mas Dama, saya ${name}. Saya tertarik dengan pembuatan website.`
+          : 'Halo Mas Dama, saya tertarik dengan pembuatan website.';
+      }
+
+      const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    // Salin alamat email ke clipboard dengan fallback yang aman di iFrame
+    function copyEmail() {
+      const emailText = document.getElementById('emailAddress').textContent.trim();
+      const statusEl = document.getElementById('copyStatus');
+
+      const tempInput = document.createElement('textarea');
+      tempInput.value = emailText;
+      tempInput.setAttribute('readonly', '');
+      tempInput.style.position = 'absolute';
+      tempInput.style.left = '-9999px';
+      document.body.appendChild(tempInput);
+      tempInput.select();
+
+      try {
+        document.execCommand('copy');
+        statusEl.classList.remove('opacity-0');
+        setTimeout(() => {
+          statusEl.classList.add('opacity-0');
+        }, 2200);
+      } catch (err) {
+        console.error('Gagal menyalin email:', err);
+      } finally {
+        document.body.removeChild(tempInput);
+      }
+    }
+  </script>
+</body>
+</html>
